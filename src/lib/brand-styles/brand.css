@@ -1,10 +1,8 @@
 /**
- * BRAND-OS CSS Styles (Adapted for OS_our-links)
+ * Linktree Alternative CSS Styles
  *
- * This stylesheet contains all brand CSS custom properties, font declarations,
- * and base styles. Adapted from BOS-3.0 lib/brand-styles/brand.css.
- *
- * Font paths use GitHub Pages basePath: /OS_our-links/fonts/
+ * This stylesheet contains all CSS custom properties, font declarations,
+ * and base styles. Uses free fonts (Inter, JetBrains Mono) via Google Fonts.
  */
 
 /* ============================================
@@ -48,10 +46,10 @@
                          inset -4px -4px 8px rgba(255, 255, 255, 0.01);
 
   /* Typography */
-  --font-display: 'Neue Haas Grotesk Display Pro', system-ui, sans-serif;
-  --font-sans: 'Neue Haas Grotesk Display Pro', system-ui, sans-serif;
-  --font-mono: 'Offbit', ui-monospace, monospace;
-  --font-accent: 'Offbit', ui-monospace, monospace;
+  --font-display: 'Inter', system-ui, sans-serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-accent: 'JetBrains Mono', ui-monospace, monospace;
 
   /* Accessibility */
   --focus-ring-width: 2px;
@@ -65,51 +63,11 @@
 
 
 /* ============================================
-   Font Declarations
-   Note: Using GitHub Pages basePath for font URLs
+   Font Imports (Google Fonts)
+   Using Inter for body text and JetBrains Mono for accents
    ============================================ */
 
-/* Offbit - Accent/Mono Font */
-@font-face {
-  font-family: 'Offbit';
-  src: url('/OS_our-links/fonts/OffBit-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Offbit';
-  src: url('/OS_our-links/fonts/OffBit-Bold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Neue Haas Grotesk Display Pro - Primary Display Font */
-@font-face {
-  font-family: 'Neue Haas Grotesk Display Pro';
-  src: url('/OS_our-links/fonts/NeueHaasDisplayRoman.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Neue Haas Grotesk Display Pro';
-  src: url('/OS_our-links/fonts/NeueHaasDisplayMedium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Neue Haas Grotesk Display Pro';
-  src: url('/OS_our-links/fonts/NeueHaasDisplayBold.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
 
 
 /* ============================================
