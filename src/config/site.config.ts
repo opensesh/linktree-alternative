@@ -258,9 +258,9 @@ export const siteConfig: SiteConfig = {
       badge: "live",
       link: "https://example.com/project-1",
       buttonLabel: "View Project",
-      mediaDefault: "/images/placeholder-01.jpg",
+      mediaDefault: "/images/placeholder-resource-01.svg",
       mediaType: "image",
-      imageHover: "/images/placeholder-02.jpg",
+      imageHover: "/images/placeholder-resource-02.svg",
     },
     {
       id: "project-2",
@@ -270,9 +270,9 @@ export const siteConfig: SiteConfig = {
       badge: "live",
       link: "https://example.com/project-2",
       buttonLabel: "Learn More",
-      mediaDefault: "/images/placeholder-02.jpg",
+      mediaDefault: "/images/placeholder-resource-02.svg",
       mediaType: "image",
-      imageHover: "/images/placeholder-01.jpg",
+      imageHover: "/images/placeholder-resource-01.svg",
     },
     {
       id: "project-3",
@@ -282,9 +282,9 @@ export const siteConfig: SiteConfig = {
       badge: "coming-soon",
       link: "#",
       buttonLabel: "Stay Tuned",
-      mediaDefault: "/images/placeholder-01.jpg",
+      mediaDefault: "/images/placeholder-resource-01.svg",
       mediaType: "image",
-      imageHover: "/images/placeholder-02.jpg",
+      imageHover: "/images/placeholder-resource-02.svg",
     },
   ],
 
@@ -295,7 +295,7 @@ export const siteConfig: SiteConfig = {
     {
       id: "tool-1",
       name: "Tool One",
-      icon: "/icons/tech/placeholder.png",
+      icon: "/icons/tech/placeholder.svg",
       url: "https://example.com",
       description: "Description of how you use this tool in your workflow.",
       tags: [
@@ -306,7 +306,7 @@ export const siteConfig: SiteConfig = {
     {
       id: "tool-2",
       name: "Tool Two",
-      icon: "/icons/tech/placeholder.png",
+      icon: "/icons/tech/placeholder.svg",
       url: "https://example.com",
       description: "Another tool you love using. Explain why it's valuable.",
       tags: [
@@ -317,7 +317,7 @@ export const siteConfig: SiteConfig = {
     {
       id: "tool-3",
       name: "Tool Three",
-      icon: "/icons/tech/placeholder.png",
+      icon: "/icons/tech/placeholder.svg",
       url: "https://example.com",
       description: "A coding tool or IDE you can't live without.",
       tags: [
@@ -328,7 +328,7 @@ export const siteConfig: SiteConfig = {
     {
       id: "tool-4",
       name: "Tool Four",
-      icon: "/icons/tech/placeholder.png",
+      icon: "/icons/tech/placeholder.svg",
       url: "https://example.com",
       description: "Content creation tool for videos, images, or audio.",
       tags: [
@@ -339,7 +339,7 @@ export const siteConfig: SiteConfig = {
     {
       id: "tool-5",
       name: "Tool Five",
-      icon: "/icons/tech/placeholder.png",
+      icon: "/icons/tech/placeholder.svg",
       url: "https://example.com",
       description: "Another productivity tool in your arsenal.",
       tags: [
@@ -350,7 +350,7 @@ export const siteConfig: SiteConfig = {
     {
       id: "tool-6",
       name: "Tool Six",
-      icon: "/icons/tech/placeholder.png",
+      icon: "/icons/tech/placeholder.svg",
       url: "https://example.com",
       description: "A design tool for creating beautiful interfaces.",
       tags: [
@@ -361,7 +361,7 @@ export const siteConfig: SiteConfig = {
     {
       id: "tool-7",
       name: "Tool Seven",
-      icon: "/icons/tech/placeholder.png",
+      icon: "/icons/tech/placeholder.svg",
       url: "https://example.com",
       description: "Version control or collaboration tool.",
       tags: [
@@ -372,7 +372,7 @@ export const siteConfig: SiteConfig = {
     {
       id: "tool-8",
       name: "Tool Eight",
-      icon: "/icons/tech/placeholder.png",
+      icon: "/icons/tech/placeholder.svg",
       url: "https://example.com",
       description: "Your default selected tool (shown on page load).",
       tags: [
@@ -383,7 +383,7 @@ export const siteConfig: SiteConfig = {
     {
       id: "tool-9",
       name: "Tool Nine",
-      icon: "/icons/tech/placeholder.png",
+      icon: "/icons/tech/placeholder.svg",
       url: "https://example.com",
       description: "AI assistant or automation tool.",
       tags: [
@@ -394,7 +394,7 @@ export const siteConfig: SiteConfig = {
     {
       id: "tool-10",
       name: "Tool Ten",
-      icon: "/icons/tech/placeholder.png",
+      icon: "/icons/tech/placeholder.svg",
       url: "https://example.com",
       description: "Browser or research tool.",
       tags: [
@@ -405,7 +405,7 @@ export const siteConfig: SiteConfig = {
     {
       id: "tool-11",
       name: "Tool Eleven",
-      icon: "/icons/tech/placeholder.png",
+      icon: "/icons/tech/placeholder.svg",
       url: "https://example.com",
       description: "Video editing software.",
       tags: [
@@ -416,7 +416,7 @@ export const siteConfig: SiteConfig = {
     {
       id: "tool-12",
       name: "Tool Twelve",
-      icon: "/icons/tech/placeholder.png",
+      icon: "/icons/tech/placeholder.svg",
       url: "https://example.com",
       description: "Motion graphics or animation tool.",
       tags: [
@@ -427,7 +427,7 @@ export const siteConfig: SiteConfig = {
     {
       id: "tool-13",
       name: "Tool Thirteen",
-      icon: "/icons/tech/placeholder.png",
+      icon: "/icons/tech/placeholder.svg",
       url: "https://example.com",
       description: "Photo editing or color grading.",
       tags: [
@@ -438,7 +438,7 @@ export const siteConfig: SiteConfig = {
     {
       id: "tool-14",
       name: "Tool Fourteen",
-      icon: "/icons/tech/placeholder.png",
+      icon: "/icons/tech/placeholder.svg",
       url: "https://example.com",
       description: "AI image or video generation.",
       tags: [
@@ -450,7 +450,7 @@ export const siteConfig: SiteConfig = {
     {
       id: "tool-15",
       name: "Tool Fifteen",
-      icon: "/icons/tech/placeholder.png",
+      icon: "/icons/tech/placeholder.svg",
       url: "https://example.com",
       description: "Screen recording or sharing utility.",
       tags: [
@@ -462,7 +462,7 @@ export const siteConfig: SiteConfig = {
     {
       id: "tool-16",
       name: "Tool Sixteen",
-      icon: "/icons/tech/placeholder.png",
+      icon: "/icons/tech/placeholder.svg",
       url: "https://example.com",
       description: "AI art generation tool.",
       tags: [
