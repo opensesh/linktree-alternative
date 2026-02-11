@@ -1,0 +1,934 @@
+/* Import brand styles from lib/brand-styles */
+@import "../lib/brand-styles/brand.css";
+@import "../lib/brand-styles/typography.css";
+@import "./theme.css";
+@import "tailwindcss";
+
+/* Tailwind 4 Theme Configuration */
+@theme inline {
+  /* Typography - Font families */
+  --font-sans: "Neue Haas Grotesk Display Pro", system-ui, sans-serif;
+  --font-display: "Neue Haas Grotesk Display Pro", system-ui, sans-serif;
+  --font-accent: "Offbit", "Neue Haas Grotesk Display Pro", sans-serif;
+
+  /* Typography - Font sizes (from BOS-3.0) */
+  --font-size-xs: 0.75rem;      /* 12px */
+  --font-size-sm: 0.875rem;     /* 14px */
+  --font-size-base: 1rem;       /* 16px */
+  --font-size-lg: 1.125rem;     /* 18px */
+  --font-size-xl: 1.25rem;      /* 20px */
+  --font-size-2xl: 1.5rem;      /* 24px */
+  --font-size-3xl: 2rem;        /* 32px */
+  --font-size-4xl: 2.5rem;      /* 40px */
+
+  /* Typography - Line heights */
+  --leading-tight: 1.25;
+  --leading-snug: 1.375;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  --leading-loose: 1.75;
+
+  /* Colors - Semantic tokens mapped from CSS variables */
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+  --color-bg-quaternary: var(--bg-quaternary);
+  --color-bg-overlay: var(--bg-overlay);
+  --color-bg-brand-solid: var(--bg-brand-solid);
+  --color-bg-brand-solid-hover: var(--bg-brand-solid_hover);
+
+  --color-fg-primary: var(--fg-primary);
+  --color-fg-secondary: var(--fg-secondary);
+  --color-fg-tertiary: var(--fg-tertiary);
+  --color-fg-quaternary: var(--fg-quaternary);
+  --color-fg-disabled: var(--fg-disabled);
+  --color-fg-placeholder: var(--fg-placeholder);
+  --color-fg-brand-primary: var(--fg-brand-primary);
+  --color-fg-brand-aperol: var(--fg-brand-aperol);
+  --color-fg-white: var(--fg-white);
+
+  --color-border-primary: var(--border-primary);
+  --color-border-secondary: var(--border-secondary);
+  --color-border-tertiary: var(--border-tertiary);
+  --color-border-brand: var(--border-brand);
+  --color-border-brand-solid: var(--border-brand-solid);
+
+  /* Brand primitives */
+  --color-charcoal: #191919;
+  --color-vanilla: #fffaee;
+  --color-aperol: #fe5102;
+
+  /* Shadows */
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+
+  /* Border radius */
+  --radius-brand: 12px;
+  --radius-brand-lg: 16px;
+}
+
+/* Base styles */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body {
+  color: var(--fg-primary);
+  background: var(--bg-primary);
+  font-family: "Neue Haas Grotesk Display Pro", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Focus visible styles */
+*:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* Prevent text selection on UI elements */
+button,
+[role="button"] {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray-600);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-500);
+}
+
+/* Utility for overflow: clip (not in Tailwind by default) */
+.overflow-clip {
+  overflow: clip;
+}
+
+/* CardNav card hover effect */
+.nav-card {
+  border: 1px solid var(--border-secondary);
+  transition: border-color 0.15s ease;
+}
+
+.nav-card:hover {
+  border-color: var(--border-brand);
+}
+
+/* Card text and arrow - default vanilla color */
+.nav-card-text,
+.nav-card-arrow {
+  color: var(--color-vanilla);
+}
+
+/* Card text and arrow - Brand color on hover */
+.nav-card:hover .nav-card-text,
+.nav-card:hover .nav-card-arrow {
+  color: var(--fg-brand-primary);
+}
+
+/* Link icon hover effect */
+.link-icon {
+  border-color: var(--color-vanilla);
+  color: var(--color-vanilla);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.link-icon:hover {
+  border-color: var(--border-brand);
+  color: var(--fg-brand-primary);
+}
+
+/* ============================================
+   FREE RESOURCES - Swipeable Cards
+   ============================================ */
+
+/* CSS Custom Properties for responsive sizing */
+:root {
+  /* Clip boundary - aligns with NavCard bottom */
+  --clip-top: 76px;
+
+  /* Link-in-bio narrow layout */
+  --content-max-width: 448px;
+
+  /* Card sizing - mobile first with peek effect */
+  --resource-card-width: calc((var(--content-max-width) - 2rem - 1.5rem) / 2.3);
+  --resource-card-gap: 0.75rem;
+  --resource-card-image-height: 120px;
+  --resource-card-padding: 12px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --content-max-width: 520px;
+    --resource-card-width: calc((var(--content-max-width) - 2rem - 1.75rem) / 2.5);
+    --resource-card-gap: 0.875rem;
+    --resource-card-image-height: 140px;
+    --resource-card-padding: 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --content-max-width: 720px;
+    --resource-card-width: calc((var(--content-max-width) - 2rem - 2.25rem) / 3.3);
+    --resource-card-gap: 1rem;
+    --resource-card-image-height: 160px;
+    --resource-card-padding: 16px;
+  }
+}
+
+/* Scroll wrapper - provides edge-to-edge scrolling */
+.resources-scroll-wrapper {
+  width: 100%;
+  overflow: visible;
+}
+
+/* Scroll container - mobile first */
+.resources-scroll {
+  display: flex;
+  gap: var(--resource-card-gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* Tablet - symmetric padding aligned with content max-width */
+@media (min-width: 640px) {
+  .resources-scroll {
+    padding-left: max(16px, calc((100vw - var(--content-max-width)) / 2));
+    padding-right: max(16px, calc((100vw - var(--content-max-width)) / 2));
+  }
+}
+
+/* Desktop - full alignment with content max-width */
+@media (min-width: 1024px) {
+  .resources-scroll {
+    padding-left: max(16px, calc((100vw - var(--content-max-width)) / 2));
+    padding-right: max(16px, calc((100vw - var(--content-max-width)) / 2));
+  }
+}
+
+.resources-scroll::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Resource card - fills grid cell */
+.resource-card {
+  width: 100%;
+  background: #191919;
+  border: 1px solid rgba(255, 250, 238, 0.12);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.15s ease;
+}
+
+/* Aperol border on hover - all screen sizes */
+.resource-card:hover {
+  border-color: var(--border-brand) !important;
+}
+
+/* Lift/shadow effect - desktop only */
+@media (min-width: 1024px) {
+  .resource-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(25, 25, 25, 0.12);
+  }
+}
+
+/* Card image area */
+.resource-card-image {
+  height: var(--resource-card-image-height);
+}
+
+/* Card content area */
+.resource-card-content {
+  padding: var(--resource-card-padding);
+}
+
+/* Card title - responsive typography (BOS-3.0 aligned) */
+.resource-card-title {
+  font-size: var(--text-card-title-sm); /* 15px */
+  line-height: var(--leading-heading);  /* 1.3 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .resource-card-title {
+    font-size: var(--text-card-title-sm); /* 15px */
+  }
+}
+
+@media (min-width: 1024px) {
+  .resource-card-title {
+    font-size: var(--text-card-title); /* 16px */
+    line-height: var(--leading-small); /* 1.4 */
+  }
+}
+
+/* Card description - responsive (BOS-3.0 aligned) */
+.resource-card-description {
+  font-size: var(--text-card-description-sm); /* 13px */
+  line-height: var(--leading-small); /* 1.4 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .resource-card-description {
+    font-size: var(--text-card-description-sm); /* 13px */
+    line-height: var(--leading-body); /* 1.5 */
+    -webkit-line-clamp: 3;
+  }
+}
+
+@media (min-width: 1024px) {
+  .resource-card-description {
+    font-size: var(--text-card-description); /* 14px */
+    -webkit-line-clamp: 3;
+  }
+}
+
+/* Card label badge (top-left) - min 11px for a11y */
+.resource-card-label {
+  font-size: var(--text-xxs); /* 11px - minimum */
+  padding: 2px 6px;
+}
+
+@media (min-width: 640px) {
+  .resource-card-label {
+    font-size: var(--text-xs); /* 12px */
+    padding: 2px 8px;
+  }
+}
+
+/* Status badges (top-right) - min 11px for a11y */
+.resource-card-badge {
+  font-size: var(--text-xxs); /* 11px - minimum */
+  padding: 3px 8px;
+}
+
+@media (min-width: 640px) {
+  .resource-card-badge {
+    font-size: var(--text-xs); /* 12px */
+    padding: 4px 10px;
+  }
+}
+
+/* Badges */
+.badge-coming-soon {
+  background: var(--color-vanilla);
+  color: var(--color-charcoal);
+}
+
+.badge-live {
+  background: var(--bg-brand-solid);
+  color: var(--fg-white);
+}
+
+/* Card button - responsive (for dark cards with vanilla styling) */
+.card-button {
+  border: 1px solid var(--color-vanilla);
+  color: var(--color-vanilla);
+  background: transparent;
+  transition: all 0.15s ease;
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+@media (min-width: 640px) {
+  .card-button {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card-button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+}
+
+.card-button:hover {
+  background: var(--color-vanilla);
+  color: #191919;
+}
+
+/* ============================================
+   OUR LINKS - Swipeable Cards Carousel
+   ============================================ */
+
+/* Scroll wrapper - provides edge-to-edge scrolling */
+.links-scroll-wrapper {
+  width: 100%;
+  overflow: visible;
+}
+
+/* Scroll container */
+.links-scroll {
+  display: flex;
+  gap: 17px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* Tablet - symmetric padding aligned with content max-width */
+@media (min-width: 640px) {
+  .links-scroll {
+    padding-left: max(16px, calc((100vw - var(--content-max-width)) / 2));
+    padding-right: max(16px, calc((100vw - var(--content-max-width)) / 2));
+  }
+}
+
+/* Desktop - full alignment with content max-width */
+@media (min-width: 1024px) {
+  .links-scroll {
+    padding-left: max(16px, calc((100vw - var(--content-max-width)) / 2));
+    padding-right: max(16px, calc((100vw - var(--content-max-width)) / 2));
+  }
+}
+
+.links-scroll::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Link card - peek effect with partial card visible */
+.link-card {
+  scroll-snap-align: start;
+  /* Show ~3.5 cards with partial 4th for peek effect */
+  width: calc((var(--content-max-width) - 2rem - 51px) / 3.5);
+  min-width: 80px;
+  max-width: 100px;
+}
+
+/* Tablet - more cards visible */
+@media (min-width: 640px) {
+  .link-card {
+    width: calc((var(--content-max-width) - 2rem - 68px) / 4.5);
+    max-width: 95px;
+  }
+}
+
+/* Desktop - even more cards */
+@media (min-width: 1024px) {
+  .link-card {
+    width: calc((var(--content-max-width) - 2rem - 85px) / 5.5);
+    max-width: 110px;
+  }
+}
+
+/* Link card hover effect */
+.link-card {
+  transition: border-color 0.15s ease;
+}
+
+.link-card:hover {
+  border-color: var(--border-brand) !important;
+}
+
+.link-card .link-card-icon {
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+/* Desktop reordering for Our Links grid */
+@media (min-width: 640px) {
+  .our-links-grid .link-card {
+    order: var(--desktop-order, 0);
+  }
+}
+
+/* Our Links Carousel Mode */
+.our-links-carousel {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 4px 56px;
+  scroll-padding-left: 56px; /* Offset snap points for left arrow overlay */
+  scroll-padding-right: 56px; /* Offset snap points for right arrow overlay */
+}
+
+.our-links-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Carousel cards - fixed width with aspect-square */
+.our-links-carousel .carousel-card {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 100px;
+  min-width: 100px;
+}
+
+/* Arrow buttons - now positioned within gradient overlays */
+.our-links-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(25, 25, 25, 0.9);
+  border: 1px solid var(--color-vanilla);
+  color: var(--color-vanilla);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.our-links-arrow:hover {
+  background: rgba(25, 25, 25, 1);
+  border-color: var(--border-brand);
+  color: var(--border-brand);
+}
+
+
+/* ============================================
+   RECENT BLOGS - Vertical Stacked Cards
+   ============================================ */
+
+/* Blog card container */
+.blog-card {
+  padding: var(--blog-card-padding, 12px);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-secondary);
+  border-radius: 12px;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.blog-card:hover {
+  border-color: var(--fg-tertiary);
+  background: var(--bg-secondary_hover);
+}
+
+/* Blog card image */
+.blog-card-image {
+  width: var(--blog-card-image-size, 80px);
+  height: var(--blog-card-image-size, 80px);
+}
+
+/* Blog card typography - responsive (BOS-3.0 aligned) */
+.blog-card-title {
+  font-size: var(--text-card-title-sm); /* 15px */
+  line-height: var(--leading-heading);  /* 1.3 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.blog-card-date {
+  font-size: var(--text-xxs); /* 11px - minimum for a11y */
+}
+
+.blog-card-author {
+  font-size: var(--text-xxs); /* 11px - minimum for a11y */
+}
+
+.blog-card-description {
+  font-size: var(--text-card-description-sm); /* 13px */
+  line-height: var(--leading-small); /* 1.4 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .blog-card {
+    padding: 14px;
+  }
+
+  .blog-card-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .blog-card-title {
+    font-size: var(--text-card-title-sm); /* 15px */
+  }
+
+  .blog-card-date {
+    font-size: var(--text-xs); /* 12px */
+  }
+
+  .blog-card-author {
+    font-size: var(--text-xs); /* 12px */
+  }
+
+  .blog-card-description {
+    font-size: var(--text-card-description-sm); /* 13px */
+    line-height: var(--leading-body); /* 1.5 */
+  }
+}
+
+@media (min-width: 1024px) {
+  .blog-card {
+    padding: 16px;
+  }
+
+  .blog-card-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .blog-card-title {
+    font-size: var(--text-card-title); /* 16px */
+    line-height: var(--leading-small); /* 1.4 */
+  }
+
+  .blog-card-date {
+    font-size: var(--text-xs); /* 12px */
+  }
+
+  .blog-card-author {
+    font-size: var(--text-xs); /* 12px */
+  }
+
+  .blog-card-description {
+    font-size: var(--text-card-description); /* 14px */
+  }
+}
+
+/* ============================================
+   SUBSCRIBE FORM - Newsletter Signup
+   ============================================ */
+
+/* Subscribe form container */
+.subscribe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .subscribe-form {
+    flex-direction: row;
+  }
+}
+
+/* Subscribe input */
+.subscribe-input {
+  flex: 1;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-family: inherit;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-secondary);
+  border-radius: 8px;
+  color: var(--fg-primary);
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+
+.subscribe-input::placeholder {
+  color: var(--fg-quaternary);
+}
+
+.subscribe-input:focus {
+  outline: none;
+  border-color: var(--border-primary);
+  background: var(--bg-secondary_hover);
+}
+
+/* Subscribe button */
+.subscribe-button {
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  background: var(--bg-secondary);
+  color: var(--color-vanilla);
+  border: 1px solid var(--border-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.subscribe-button:hover {
+  border-color: var(--border-brand);
+  background: var(--bg-secondary_hover);
+}
+
+/* Hint text below form */
+.subscribe-hint {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--fg-quaternary);
+}
+
+/* ============================================
+   TECH STACK - iOS Command Center Style
+   ============================================ */
+
+/* CSS Custom Properties for link icons (Our Links section) */
+:root {
+  --link-icon-size: 18px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --link-icon-size: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --link-icon-size: 22px;
+  }
+}
+
+/* Link icon SVG sizing */
+.link-icon-svg {
+  width: var(--link-icon-size);
+  height: var(--link-icon-size);
+}
+
+/* CSS Custom Properties for tech stack */
+:root {
+  --tech-stack-gap: 8px;
+  --tech-icon-size: 40px;
+  --tech-icon-radius: 10px;
+  --tech-container-radius: 24px;
+  --tech-inner-radius: 20px;
+  --tech-label-radius: 16px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --tech-stack-gap: 10px;
+    --tech-icon-size: 44px;
+    --tech-icon-radius: 12px;
+    --tech-container-radius: 28px;
+    --tech-inner-radius: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --tech-stack-gap: 12px;
+    --tech-icon-size: 48px;
+    --tech-icon-radius: 14px;
+    --tech-container-radius: 32px;
+    --tech-inner-radius: 28px;
+  }
+}
+
+/* Outer wrapper - handles padding alignment */
+.tech-stack-outer {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+@media (min-width: 640px) {
+  .tech-stack-outer {
+    padding-left: max(16px, calc((100vw - var(--content-max-width)) / 2));
+    padding-right: max(16px, calc((100vw - var(--content-max-width)) / 2));
+  }
+}
+
+/* Glassmorphism outer container */
+.tech-stack-container {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--tech-container-radius);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Inner pill container for icons */
+.tech-stack-inner {
+  background: rgba(69, 69, 69, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--tech-inner-radius);
+  padding: 10px;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Scroll container */
+.tech-stack-scroll {
+  display: flex;
+  gap: var(--tech-stack-gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 6px;
+}
+
+.tech-stack-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual icon wrapper */
+.tech-icon-wrapper {
+  flex-shrink: 0;
+  scroll-snap-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(45, 45, 45, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--tech-icon-radius);
+  padding: 6px;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 0.2s ease,
+              box-shadow 0.2s ease,
+              border-color 0.2s ease;
+  cursor: pointer;
+}
+
+/* Hover state - desktop only */
+@media (min-width: 1024px) {
+  .tech-icon-wrapper:hover {
+    transform: scale(1.15);
+    background: rgba(60, 60, 60, 0.8);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    position: relative;
+  }
+}
+
+/* Active/pressed state for touch */
+.tech-icon-wrapper:active {
+  transform: scale(0.95);
+}
+
+/* The actual icon image */
+.tech-icon {
+  width: var(--tech-icon-size);
+  height: var(--tech-icon-size);
+  border-radius: calc(var(--tech-icon-radius) - 4px);
+  object-fit: contain;
+}
+
+/* Floating label pill */
+.tech-label-pill {
+  background: #1a1919;
+  border: 1px solid rgba(84, 84, 84, 0.8);
+  border-radius: var(--tech-label-radius);
+  padding: 6px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-vanilla);
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tech-label-pill.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .tech-icon-wrapper {
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+  
+  .tech-icon-wrapper:hover {
+    transform: none;
+  }
+  
+  .tech-icon-wrapper:active {
+    transform: none;
+  }
+}
+
+/* Tech stack SVG icon fill - make visible on dark background */
+.tech-icon-wrapper img[src$=".svg"] {
+  filter: brightness(0) invert(1);
+}
+
+/* PNG icons don't need filter */
+.tech-icon-wrapper img[src$=".png"] {
+  filter: none;
+}
+
+/* ============================================
+   SCROLL PROGRESS INDICATOR
+   ============================================ */
+
+.scroll-progress-container {
+  padding: 0.75rem 1rem 0;
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .scroll-progress-container {
+    padding-left: max(1rem, calc((100vw - var(--content-max-width)) / 2));
+    padding-right: max(1rem, calc((100vw - var(--content-max-width)) / 2));
+  }
+}
+
+.scroll-progress-track {
+  height: 4px;
+  background: var(--border-secondary);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.scroll-progress-thumb {
+  height: 100%;
+  background: var(--fg-tertiary);
+  border-radius: 9999px;
+  transition: width 0.15s ease-out;
+}

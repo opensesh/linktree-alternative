@@ -1,0 +1,368 @@
+/**
+ * BOS 3.0 Theme - Untitled UI Integration
+ *
+ * Brand Color Strategy: "Warm Neutrals"
+ * Instead of standard grays, we use Charcoal and Vanilla as the foundation
+ * for the entire neutral scale, giving the UI warmth and brand recognition.
+ *
+ * Brand Colors:
+ * - Aperol (#FE5102) - Primary brand color for CTAs, links, accents
+ * - Charcoal (#191919) - Warm dark neutral, replaces pure black
+ * - Vanilla (#FFFAEE) - Warm light neutral, replaces pure white
+ */
+
+/* ============================================
+   PRIMITIVE COLOR SCALES
+   ============================================ */
+:root {
+  /* Brand Scale (Aperol #FE5102) */
+  --color-brand-25: #fffaf5;
+  --color-brand-50: #fff3eb;
+  --color-brand-100: #ffe4d4;
+  --color-brand-200: #ffc8a8;
+  --color-brand-300: #ffa370;
+  --color-brand-400: #ff7a38;
+  --color-brand-500: #fe5102;
+  --color-brand-600: #e64400;
+  --color-brand-700: #bf3600;
+  --color-brand-800: #992d05;
+  --color-brand-900: #7a280a;
+  --color-brand-950: #431302;
+
+  /* Warm Gray Scale (tinted toward Vanilla for cohesive brand feel) */
+  --color-gray-25: #fdfcfb;
+  --color-gray-50: #faf9f7;
+  --color-gray-100: #f5f3f0;
+  --color-gray-200: #ebe8e4;
+  --color-gray-300: #d5d1cb;
+  --color-gray-400: #a8a29b;
+  --color-gray-500: #78726a;
+  --color-gray-600: #5c574f;
+  --color-gray-700: #44403a;
+  --color-gray-800: #2d2a26;
+  --color-gray-900: #1c1a17;
+  --color-gray-950: #0f0e0c;
+
+  /* Utility Colors */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-vanilla: #fffaee;
+  --color-charcoal: #191919;
+
+  /* Error Scale */
+  --color-error-25: #fffbfa;
+  --color-error-50: #fef3f2;
+  --color-error-100: #fee4e2;
+  --color-error-200: #fecdca;
+  --color-error-300: #fda29b;
+  --color-error-400: #f97066;
+  --color-error-500: #f04438;
+  --color-error-600: #d92d20;
+  --color-error-700: #b42318;
+  --color-error-800: #912018;
+  --color-error-900: #7a271a;
+  --color-error-950: #55160c;
+
+  /* Warning Scale */
+  --color-warning-25: #fffcf5;
+  --color-warning-50: #fffaeb;
+  --color-warning-100: #fef0c7;
+  --color-warning-200: #fedf89;
+  --color-warning-300: #fec84b;
+  --color-warning-400: #fdb022;
+  --color-warning-500: #f79009;
+  --color-warning-600: #dc6803;
+  --color-warning-700: #b54708;
+  --color-warning-800: #93370d;
+  --color-warning-900: #7a2e0e;
+  --color-warning-950: #4e1d09;
+
+  /* Success Scale */
+  --color-success-25: #f6fef9;
+  --color-success-50: #ecfdf3;
+  --color-success-100: #d1fadf;
+  --color-success-200: #a6f4c5;
+  --color-success-300: #6ce9a6;
+  --color-success-400: #32d583;
+  --color-success-500: #12b76a;
+  --color-success-600: #039855;
+  --color-success-700: #027a48;
+  --color-success-800: #05603a;
+  --color-success-900: #054f31;
+  --color-success-950: #053321;
+
+  /* ============================================
+     LIGHT MODE SEMANTIC TOKENS
+     ============================================ */
+
+  /* Background - Soft warm neutrals for comfortable viewing */
+  --bg-primary: #faf8f5;
+  --bg-primary_alt: var(--color-gray-25);
+  --bg-primary_hover: var(--color-gray-100);
+  --bg-secondary: var(--color-white);
+  --bg-secondary_alt: var(--color-gray-50);
+  --bg-secondary_hover: var(--color-gray-50);
+  --bg-secondary_subtle: var(--color-gray-25);
+  --bg-tertiary: var(--color-gray-100);
+  --bg-quaternary: var(--color-gray-200);
+  --bg-active: var(--color-gray-100);
+  --bg-disabled: var(--color-gray-100);
+  --bg-disabled_subtle: var(--color-gray-50);
+  --bg-overlay: rgba(25, 25, 25, 0.6);
+
+  /* Brand Background */
+  --bg-brand-primary: var(--color-brand-50);
+  --bg-brand-primary_alt: var(--color-brand-100);
+  --bg-brand-secondary: var(--color-brand-100);
+  --bg-brand-solid: var(--color-brand-600);
+  --bg-brand-solid_hover: var(--color-brand-700);
+  --bg-brand-section: var(--color-brand-800);
+  --bg-brand-section_subtle: var(--color-brand-700);
+
+  /* Error Background */
+  --bg-error-primary: var(--color-error-50);
+  --bg-error-secondary: var(--color-error-100);
+  --bg-error-solid: var(--color-error-600);
+
+  /* Warning Background */
+  --bg-warning-primary: var(--color-warning-50);
+  --bg-warning-secondary: var(--color-warning-100);
+  --bg-warning-solid: var(--color-warning-600);
+  --bg-warning-solid_hover: var(--color-warning-700);
+
+  /* Success Background */
+  --bg-success-primary: var(--color-success-50);
+  --bg-success-secondary: var(--color-success-100);
+  --bg-success-solid: var(--color-success-600);
+
+  /* Foreground / Text - Charcoal-based for warm contrast */
+  --fg-primary: var(--color-charcoal);
+  --fg-secondary: var(--color-gray-700);
+  --fg-secondary_hover: var(--color-gray-800);
+  --fg-tertiary: var(--color-gray-600);
+  --fg-tertiary_hover: var(--color-gray-700);
+  --fg-quaternary: var(--color-gray-500);
+  --fg-quaternary_hover: var(--color-gray-600);
+  --fg-quinary: var(--color-gray-400);
+  --fg-quinary_hover: var(--color-gray-500);
+  --fg-senary: var(--color-gray-300);
+  --fg-white: var(--color-white);
+  --fg-disabled: var(--color-gray-400);
+  --fg-disabled_subtle: var(--color-gray-300);
+  --fg-placeholder: var(--color-gray-500);
+  --fg-placeholder_subtle: var(--color-gray-300);
+
+  /* Brand Foreground */
+  --fg-brand-primary: var(--color-brand-600);
+  --fg-brand-primary_alt: var(--color-brand-600);
+  --fg-brand-secondary: var(--color-brand-500);
+  --fg-brand-secondary_hover: var(--color-brand-600);
+  --fg-brand-secondary_alt: var(--color-brand-600);
+  --fg-brand-aperol: var(--color-brand-500);
+
+  /* Error Foreground */
+  --fg-error-primary: var(--color-error-600);
+  --fg-error-secondary: var(--color-error-500);
+
+  /* Warning Foreground */
+  --fg-warning-primary: var(--color-warning-600);
+  --fg-warning-secondary: var(--color-warning-500);
+
+  /* Success Foreground */
+  --fg-success-primary: var(--color-success-600);
+  --fg-success-secondary: var(--color-success-500);
+
+  /* Border */
+  --border-primary: var(--color-gray-200);
+  --border-secondary: var(--color-gray-200);
+  --border-tertiary: var(--color-gray-100);
+  --border-disabled: var(--color-gray-300);
+  --border-disabled_subtle: var(--color-gray-200);
+  --border-brand: var(--color-brand-400);
+  --border-brand_alt: var(--color-brand-300);
+  --border-brand-solid: var(--color-brand-500);
+  --border-brand-solid_alt: var(--color-brand-600);
+  --border-error: var(--color-error-300);
+  --border-error-solid: var(--color-error-600);
+  --border-warning: var(--color-warning-300);
+  --border-success: var(--color-success-300);
+
+  /* Button Tokens */
+  --button-primary-fg: var(--color-white);
+  --button-primary-fg_hover: var(--color-white);
+  --button-primary-bg: var(--color-brand-600);
+  --button-primary-bg_hover: var(--color-brand-700);
+  --button-primary-border: var(--color-brand-600);
+  --button-primary-icon: var(--color-brand-200);
+  --button-primary-icon_hover: var(--color-brand-100);
+
+  --button-secondary-fg: var(--color-gray-700);
+  --button-secondary-fg_hover: var(--color-gray-800);
+  --button-secondary-bg: var(--color-white);
+  --button-secondary-bg_hover: var(--color-gray-50);
+  --button-secondary-border: var(--color-gray-300);
+
+  --button-tertiary-fg: var(--color-gray-600);
+  --button-tertiary-fg_hover: var(--color-gray-700);
+  --button-tertiary-bg: transparent;
+  --button-tertiary-bg_hover: var(--color-gray-50);
+
+  /* Focus Ring */
+  --focus-ring: var(--color-brand-500);
+  --focus-ring-error: var(--color-error-500);
+
+  /* Shadows - soft warm tones */
+  --shadow-xs: 0px 1px 2px rgba(25, 25, 25, 0.04);
+  --shadow-sm: 0px 1px 3px rgba(25, 25, 25, 0.06), 0px 1px 2px rgba(25, 25, 25, 0.04);
+  --shadow-md: 0px 4px 8px -2px rgba(25, 25, 25, 0.08), 0px 2px 4px -2px rgba(25, 25, 25, 0.04);
+  --shadow-lg: 0px 12px 16px -4px rgba(25, 25, 25, 0.06), 0px 4px 6px -2px rgba(25, 25, 25, 0.02);
+  --shadow-xl: 0px 20px 24px -4px rgba(25, 25, 25, 0.08), 0px 8px 8px -4px rgba(25, 25, 25, 0.03);
+  --shadow-2xl: 0px 24px 48px -12px rgba(25, 25, 25, 0.18);
+  --shadow-3xl: 0px 32px 64px -12px rgba(25, 25, 25, 0.14);
+
+  /* Ring/outline for buttons */
+  --ring-brand: 0 0 0 4px var(--color-brand-100);
+  --ring-gray: 0 0 0 4px var(--color-gray-100);
+  --ring-error: 0 0 0 4px var(--color-error-100);
+  --ring-primary: var(--border-primary);
+  --ring-disabled_subtle: var(--color-gray-200);
+  --ring-error_subtle: var(--color-error-200);
+}
+
+/* ============================================
+   DARK MODE SEMANTIC TOKENS
+   ============================================ */
+.dark {
+  /* Background - Charcoal-based */
+  --bg-primary: var(--color-charcoal);
+  --bg-primary_alt: #1f1f1f;
+  --bg-primary_hover: #242424;
+  --bg-secondary: #1f1f1f;
+  --bg-secondary_alt: #242424;
+  --bg-secondary_hover: #2a2a2a;
+  --bg-secondary_subtle: #1a1a1a;
+  --bg-tertiary: #2a2a2a;
+  --bg-quaternary: #333333;
+  --bg-active: #2a2a2a;
+  --bg-disabled: #1f1f1f;
+  --bg-disabled_subtle: #1a1a1a;
+  --bg-overlay: rgba(0, 0, 0, 0.8);
+
+  /* Brand Background (adjusted for dark) */
+  --bg-brand-primary: #2a1508;
+  --bg-brand-primary_alt: #3d1e0c;
+  --bg-brand-secondary: #3d1e0c;
+  --bg-brand-solid: var(--color-brand-500);
+  --bg-brand-solid_hover: var(--color-brand-400);
+  --bg-brand-section: var(--color-brand-900);
+  --bg-brand-section_subtle: var(--color-brand-800);
+
+  /* Error Background (dark) */
+  --bg-error-primary: #2d1919;
+  --bg-error-secondary: #3d2222;
+  --bg-error-solid: var(--color-error-500);
+
+  /* Warning Background (dark) */
+  --bg-warning-primary: #2d2514;
+  --bg-warning-secondary: #3d3219;
+  --bg-warning-solid: var(--color-warning-500);
+  --bg-warning-solid_hover: var(--color-warning-400);
+
+  /* Success Background (dark) */
+  --bg-success-primary: #142d1f;
+  --bg-success-secondary: #1a3d29;
+  --bg-success-solid: var(--color-success-500);
+
+  /* Foreground / Text - Vanilla-based for warm readability */
+  --fg-primary: var(--color-vanilla);
+  --fg-secondary: var(--color-gray-300);
+  --fg-secondary_hover: var(--color-gray-200);
+  --fg-tertiary: var(--color-gray-400);
+  --fg-tertiary_hover: var(--color-gray-300);
+  --fg-quaternary: var(--color-gray-500);
+  --fg-quaternary_hover: var(--color-gray-400);
+  --fg-quinary: var(--color-gray-600);
+  --fg-quinary_hover: var(--color-gray-500);
+  --fg-senary: var(--color-gray-700);
+  --fg-white: var(--color-vanilla);
+  --fg-disabled: var(--color-gray-600);
+  --fg-disabled_subtle: var(--color-gray-700);
+  --fg-placeholder: var(--color-gray-500);
+  --fg-placeholder_subtle: var(--color-gray-600);
+
+  /* Brand Foreground (brighter in dark mode for contrast) */
+  --fg-brand-primary: var(--color-brand-400);
+  --fg-brand-primary_alt: var(--color-brand-400);
+  --fg-brand-secondary: var(--color-brand-500);
+  --fg-brand-secondary_hover: var(--color-brand-400);
+  --fg-brand-secondary_alt: var(--color-brand-400);
+  --fg-brand-aperol: var(--color-brand-500);
+
+  /* Error Foreground (dark) */
+  --fg-error-primary: var(--color-error-400);
+  --fg-error-secondary: var(--color-error-300);
+
+  /* Warning Foreground (dark) */
+  --fg-warning-primary: var(--color-warning-400);
+  --fg-warning-secondary: var(--color-warning-300);
+
+  /* Success Foreground (dark) */
+  --fg-success-primary: var(--color-success-400);
+  --fg-success-secondary: var(--color-success-300);
+
+  /* Border (dark) */
+  --border-primary: #3d3d3d;
+  --border-secondary: #2e2e2e;
+  --border-tertiary: #242424;
+  --border-disabled: #2e2e2e;
+  --border-disabled_subtle: #242424;
+  --border-brand: var(--color-brand-500);
+  --border-brand_alt: var(--color-brand-600);
+  --border-brand-solid: var(--color-brand-500);
+  --border-brand-solid_alt: var(--color-brand-400);
+  --border-error: var(--color-error-700);
+  --border-error-solid: var(--color-error-500);
+  --border-warning: var(--color-warning-700);
+  --border-success: var(--color-success-700);
+
+  /* Button Tokens (dark) */
+  --button-primary-fg: var(--color-white);
+  --button-primary-fg_hover: var(--color-white);
+  --button-primary-bg: var(--color-brand-500);
+  --button-primary-bg_hover: var(--color-brand-400);
+  --button-primary-border: var(--color-brand-500);
+  --button-primary-icon: var(--color-brand-200);
+  --button-primary-icon_hover: var(--color-brand-100);
+
+  --button-secondary-fg: var(--color-gray-300);
+  --button-secondary-fg_hover: var(--color-vanilla);
+  --button-secondary-bg: #1f1f1f;
+  --button-secondary-bg_hover: #2e2e2e;
+  --button-secondary-border: #3d3d3d;
+
+  --button-tertiary-fg: var(--color-gray-400);
+  --button-tertiary-fg_hover: var(--color-gray-300);
+  --button-tertiary-bg: transparent;
+  --button-tertiary-bg_hover: #242424;
+
+  /* Focus Ring (dark) */
+  --focus-ring: var(--color-brand-400);
+  --focus-ring-error: var(--color-error-400);
+
+  /* Shadows (dark - more subtle, darker) */
+  --shadow-xs: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-sm: 0px 1px 3px rgba(0, 0, 0, 0.3), 0px 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0px 4px 8px -2px rgba(0, 0, 0, 0.3), 0px 2px 4px -2px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0px 12px 16px -4px rgba(0, 0, 0, 0.3), 0px 4px 6px -2px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0px 20px 24px -4px rgba(0, 0, 0, 0.3), 0px 8px 8px -4px rgba(0, 0, 0, 0.15);
+  --shadow-2xl: 0px 24px 48px -12px rgba(0, 0, 0, 0.4);
+  --shadow-3xl: 0px 32px 64px -12px rgba(0, 0, 0, 0.35);
+
+  /* Ring/outline (dark) */
+  --ring-brand: 0 0 0 4px rgba(254, 81, 2, 0.24);
+  --ring-gray: 0 0 0 4px rgba(255, 255, 255, 0.12);
+  --ring-error: 0 0 0 4px rgba(240, 68, 56, 0.24);
+  --ring-primary: var(--border-primary);
+  --ring-disabled_subtle: #3d3d3d;
+  --ring-error_subtle: var(--color-error-800);
+}

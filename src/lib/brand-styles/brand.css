@@ -1,0 +1,271 @@
+/**
+ * BRAND-OS CSS Styles (Adapted for OS_our-links)
+ *
+ * This stylesheet contains all brand CSS custom properties, font declarations,
+ * and base styles. Adapted from BOS-3.0 lib/brand-styles/brand.css.
+ *
+ * Font paths use GitHub Pages basePath: /OS_our-links/fonts/
+ */
+
+/* ============================================
+   CSS Custom Properties (Design Tokens)
+   ============================================ */
+
+:root {
+  /* Brand Colors */
+  --brand-charcoal: #191919;
+  --brand-vanilla: #FFFAEE;
+  --brand-aperol: #FE5102;
+
+  /* OS Dark Theme Palette */
+  --os-bg-darker: #0C0C0C;
+  --os-bg-dark: #141414;
+  --os-surface-dark: #1C1C1C;
+  --os-border-dark: #2C2C2C;
+  --os-text-primary-dark: #E8E8E8;
+  --os-text-secondary-dark: #9CA3AF;
+
+  /* Border Radius */
+  --radius-brand: 12px;
+  --radius-brand-lg: 16px;
+
+  /* Shadows */
+  --shadow-brand: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-brand-lg: 0 4px 16px rgba(0, 0, 0, 0.15);
+
+  /* Neuromorphic Shadows */
+  --shadow-neuro: 4px 4px 8px rgba(0, 0, 0, 0.3),
+                  -4px -4px 8px rgba(255, 255, 255, 0.02),
+                  inset 2px 2px 4px rgba(0, 0, 0, 0.2),
+                  inset -2px -2px 4px rgba(255, 255, 255, 0.01);
+  --shadow-neuro-hover: 6px 6px 12px rgba(0, 0, 0, 0.4),
+                        -6px -6px 12px rgba(255, 255, 255, 0.03),
+                        inset 1px 1px 2px rgba(0, 0, 0, 0.15),
+                        inset -1px -1px 2px rgba(255, 255, 255, 0.02);
+  --shadow-neuro-active: 2px 2px 4px rgba(0, 0, 0, 0.3),
+                         -2px -2px 4px rgba(255, 255, 255, 0.02),
+                         inset 4px 4px 8px rgba(0, 0, 0, 0.3),
+                         inset -4px -4px 8px rgba(255, 255, 255, 0.01);
+
+  /* Typography */
+  --font-display: 'Neue Haas Grotesk Display Pro', system-ui, sans-serif;
+  --font-sans: 'Neue Haas Grotesk Display Pro', system-ui, sans-serif;
+  --font-mono: 'Offbit', ui-monospace, monospace;
+  --font-accent: 'Offbit', ui-monospace, monospace;
+
+  /* Accessibility */
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+  --focus-ring-color: var(--brand-aperol);
+  --min-touch-target: 44px;
+
+  /* Transitions */
+  --transition-colors: color 200ms ease, background-color 200ms ease, border-color 200ms ease;
+}
+
+
+/* ============================================
+   Font Declarations
+   Note: Using GitHub Pages basePath for font URLs
+   ============================================ */
+
+/* Offbit - Accent/Mono Font */
+@font-face {
+  font-family: 'Offbit';
+  src: url('/OS_our-links/fonts/OffBit-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Offbit';
+  src: url('/OS_our-links/fonts/OffBit-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Neue Haas Grotesk Display Pro - Primary Display Font */
+@font-face {
+  font-family: 'Neue Haas Grotesk Display Pro';
+  src: url('/OS_our-links/fonts/NeueHaasDisplayRoman.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display Pro';
+  src: url('/OS_our-links/fonts/NeueHaasDisplayMedium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Neue Haas Grotesk Display Pro';
+  src: url('/OS_our-links/fonts/NeueHaasDisplayBold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+/* ============================================
+   Utility Classes
+   ============================================ */
+
+/* Hide scrollbar while maintaining scroll functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Line clamp utilities */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Single line truncate */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* ============================================
+   Animation Classes
+   ============================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes cursor {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.fade-in-up {
+  animation: fadeIn 0.2s ease-in-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.2s ease-out forwards;
+}
+
+.animate-slide-out-right {
+  animation: slideOutRight 0.2s ease-in forwards;
+}
+
+.animate-blob {
+  animation: blob 10s infinite;
+}
+
+
+/* ============================================
+   Neuromorphic UI Component
+   ============================================ */
+
+.neuromorphic-prompt {
+  background: linear-gradient(145deg, #2a2a2a, #252525);
+  box-shadow: var(--shadow-neuro);
+  transition: all 0.2s ease;
+}
+
+.neuromorphic-prompt:hover {
+  box-shadow: var(--shadow-neuro-hover);
+  transform: translateY(-2px);
+}
+
+.neuromorphic-prompt:active {
+  box-shadow: var(--shadow-neuro-active);
+  transform: translateY(0);
+}
+
+
+/* ============================================
+   Button Styles
+   ============================================ */
+
+button,
+[role="button"] {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+
+/* ============================================
+   Icon Styles (Lucide compatibility)
+   ============================================ */
+
+.lucide {
+  stroke-width: 1 !important;
+}
