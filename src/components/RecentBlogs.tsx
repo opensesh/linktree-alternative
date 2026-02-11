@@ -1,8 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-
-const SUBSTACK_RSS_URL = "https://opensession.substack.com/feed";
+import { siteConfig } from "@/config/site.config";
 
 interface BlogPost {
   id: string;
@@ -69,7 +68,7 @@ function BlogCard({ post }: { post: BlogPost }) {
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center text-[var(--fg-quaternary)]">
-            <span className="text-xl font-bold font-accent">OS</span>
+            <span className="text-xl font-bold font-accent">Blog</span>
           </div>
         )}
       </div>
@@ -111,15 +110,21 @@ function BlogCardSkeleton() {
 }
 
 export function RecentBlogs() {
+  const { blog } = siteConfig;
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(false);
+
+  // Don't render if blog is disabled
+  if (!blog.enabled) {
+    return null;
+  }
 
   useEffect(() => {
     async function loadPosts() {
       try {
         // Use rss2json.com API for CORS-friendly RSS fetching
-        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(SUBSTACK_RSS_URL)}`;
+        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(blog.feedUrl)}`;
         const response = await fetch(apiUrl);
         if (!response.ok) throw new Error("Failed to fetch");
         const data: RssResponse = await response.json();
@@ -135,7 +140,7 @@ export function RecentBlogs() {
             stripHtml(item.description).slice(0, 200) +
             (item.description.length > 200 ? "..." : ""),
           date: formatDate(item.pubDate),
-          author: item.author || "Open Session",
+          author: item.author || "Author",
           imageUrl: item.thumbnail || item.enclosure?.link || null,
           link: item.link,
         }));
@@ -148,23 +153,25 @@ export function RecentBlogs() {
       }
     }
     loadPosts();
-  }, []);
+  }, [blog.feedUrl]);
 
   // Don't render if error or no posts
   if (error || (!isLoading && posts.length === 0)) {
     return null;
   }
 
+  const hasSubscribeForm = blog.subscribeUrl && blog.subscribeUrl.length > 0;
+
   return (
     <section className="w-full mt-6 sm:mt-8">
       {/* Container with max-width */}
       <div className="max-w-[var(--content-max-width)] mx-auto">
-        {/* Heading - Neue Haas Grotesk */}
+        {/* Heading */}
         <h2
           className="text-xl font-bold mb-3 sm:mb-4"
           style={{ color: "var(--color-vanilla)" }}
         >
-          Recent Blogs
+          {blog.title}
         </h2>
 
         {/* Blog cards - vertical stack */}
@@ -180,28 +187,30 @@ export function RecentBlogs() {
           )}
         </div>
 
-        {/* Subscribe form */}
-        <div className="mt-6">
-          <form
-            action="https://opensession.substack.com/api/v1/free?nojs=true"
-            method="post"
-            className="subscribe-form"
-          >
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter your email"
-              required
-              className="subscribe-input"
-            />
-            <button type="submit" className="subscribe-button">
-              Subscribe
-            </button>
-          </form>
-          <p className="subscribe-hint">
-            Get our latest posts delivered to your inbox
-          </p>
-        </div>
+        {/* Subscribe form - only if subscribeUrl is set */}
+        {hasSubscribeForm && (
+          <div className="mt-6">
+            <form
+              action={`${blog.subscribeUrl}/api/v1/free?nojs=true`}
+              method="post"
+              className="subscribe-form"
+            >
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                required
+                className="subscribe-input"
+              />
+              <button type="submit" className="subscribe-button">
+                Subscribe
+              </button>
+            </form>
+            <p className="subscribe-hint">
+              Get the latest posts delivered to your inbox
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );

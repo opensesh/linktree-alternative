@@ -2,18 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
-
-interface NavCard {
-  id: string;
-  label: string;
-  href: string;
-}
-
-const navCards: NavCard[] = [
-  { id: "about", label: "About", href: "https://opensession.co/about" },
-  { id: "projects", label: "Projects", href: "https://opensession.co/projects" },
-  { id: "contact", label: "Contact", href: "https://opensession.co/contact" },
-];
+import { siteConfig, withBasePath } from "@/config/site.config";
 
 export function CardNav() {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,6 +10,8 @@ export function CardNav() {
   const cardsRef = useRef<HTMLDivElement>(null);
   const hamburgerRef = useRef<HTMLButtonElement>(null);
   const overlayRef = useRef<HTMLDivElement>(null);
+
+  const { nav, branding } = siteConfig;
 
   useEffect(() => {
     if (!containerRef.current || !cardsRef.current) return;
@@ -206,18 +197,27 @@ export function CardNav() {
                 />
               </button>
 
-              {/* Centered Horizontal Wordmark */}
+              {/* Centered Logo or Text */}
               <div className="absolute left-1/2 -translate-x-1/2 flex items-center">
-                <img
-                  src="/OS_our-links/images/logo_wordmark_charcoal.svg"
-                  alt="Open Session"
-                  className="h-[32px] sm:h-[36px] w-auto"
-                />
+                {branding.logo ? (
+                  <img
+                    src={withBasePath(branding.logo)}
+                    alt={branding.logoAlt}
+                    className="h-[32px] sm:h-[36px] w-auto"
+                  />
+                ) : (
+                  <span
+                    className="text-lg font-bold"
+                    style={{ color: "var(--color-charcoal)" }}
+                  >
+                    {branding.logoAlt}
+                  </span>
+                )}
               </div>
 
               {/* Globe Icon Button */}
               <a
-                href="https://opensession.co/"
+                href={branding.websiteUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-10 h-10 transition-opacity hover:opacity-70 flex-shrink-0"
@@ -245,7 +245,7 @@ export function CardNav() {
               ref={cardsRef}
               className="px-4 pb-4 grid gap-3 md:grid-cols-3 grid-cols-1 overflow-hidden"
                           >
-              {navCards.map((card) => (
+              {nav.map((card) => (
                 <a
                   key={card.id}
                   href={card.href}

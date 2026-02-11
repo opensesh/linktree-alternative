@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { SubscribeModal, hasResourceAccess } from "./SubscribeModal";
+import { siteConfig, withBasePath, type Resource } from "@/config/site.config";
 
 // Custom icon component - stroke-based for consistent outline style
 function ExternalLinkIcon() {
@@ -24,57 +25,6 @@ function ExternalLinkIcon() {
   );
 }
 
-interface ResourceCard {
-  id: string;
-  badge: { text: string; variant: "coming-soon" | "live" };
-  mediaDefault: string;
-  mediaType: "image" | "video";
-  imageHover: string;
-  title: string;
-  description: string;
-  href: string;
-  buttonLabel: string;
-}
-
-const resourceCards: ResourceCard[] = [
-  {
-    id: "brand-design-system",
-    badge: { text: "Coming Soon", variant: "coming-soon" },
-    mediaDefault: "/OS_our-links/images/brand-design-system-01.jpg",
-    mediaType: "image",
-    imageHover: "/OS_our-links/images/brand-design-system-02.jpg",
-    title: "Brand Design System",
-    description:
-      "Comprehensive design system optimized for brand identity in the AI era. Fully configurable with connected variables",
-    href: "#",
-    buttonLabel: "Figma",
-  },
-  {
-    id: "design-directory",
-    badge: { text: "Live", variant: "live" },
-    mediaDefault: "/OS_our-links/images/design-directory-01.mp4",
-    mediaType: "video",
-    imageHover: "/OS_our-links/images/design-directory-02.jpg",
-    title: "Design Directory",
-    description:
-      "All of our favorite tools in an interactive directory, open-source and ready to adapt",
-    href: "https://design-directory-blue.vercel.app/",
-    buttonLabel: "Website",
-  },
-  {
-    id: "portfolio",
-    badge: { text: "Live", variant: "live" },
-    mediaDefault: "/OS_our-links/images/portfolio-01.jpg",
-    mediaType: "image",
-    imageHover: "/OS_our-links/images/portfolio-02.jpg",
-    title: "Portfolio Presentation Template",
-    description:
-      "Our co-founder's portfolio that helped him land jobs at Google, Salesforce, and other Fortune 500 companies. Open source and ready to customize",
-    href: "https://www.figma.com/community/file/1597821544420498783/portfolio-presentation-template-built-to-land-offers",
-    buttonLabel: "Figma",
-  },
-];
-
 function Badge({ text, variant }: { text: string; variant: "coming-soon" | "live" }) {
   const badgeClass = variant === "coming-soon" ? "badge-coming-soon" : "badge-live";
   return (
@@ -89,12 +39,13 @@ function ResourceCardComponent({
   isLast,
   onCardClick,
 }: {
-  card: ResourceCard;
+  card: Resource;
   isLast: boolean;
-  onCardClick: (card: ResourceCard) => void;
+  onCardClick: (card: Resource) => void;
 }) {
   const [isHovered, setIsHovered] = useState(false);
-  const isLive = card.badge.variant === "live";
+  const isLive = card.badge === "live";
+  const badgeText = card.badge === "coming-soon" ? "Coming Soon" : "Live";
 
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -125,7 +76,7 @@ function ResourceCardComponent({
         {/* O1 - Default media (image or video) */}
         {card.mediaType === "video" ? (
           <motion.video
-            src={card.mediaDefault}
+            src={withBasePath(card.mediaDefault)}
             autoPlay
             loop
             muted
@@ -139,7 +90,7 @@ function ResourceCardComponent({
           />
         ) : (
           <motion.img
-            src={card.mediaDefault}
+            src={withBasePath(card.mediaDefault)}
             alt={card.title}
             className="absolute inset-0 w-full h-full object-cover object-top"
             animate={{
@@ -152,7 +103,7 @@ function ResourceCardComponent({
 
         {/* O2 - Hover image with crossfade + subtle scale */}
         <motion.img
-          src={card.imageHover}
+          src={withBasePath(card.imageHover)}
           alt=""
           className="absolute inset-0 w-full h-full object-cover object-top"
           initial={{ opacity: 0, scale: 1.05 }}
@@ -165,7 +116,7 @@ function ResourceCardComponent({
 
         {/* Badge - Top Right */}
         <div className="absolute top-2 right-2 sm:top-3 sm:right-3 z-10">
-          <Badge text={card.badge.text} variant={card.badge.variant} />
+          <Badge text={badgeText} variant={card.badge} />
         </div>
       </div>
 
@@ -187,15 +138,18 @@ function ResourceCardComponent({
 }
 
 export function FreeResources() {
+  const resourceCards = siteConfig.resources;
+  const { subscribeModal } = siteConfig.features;
+
   const [modalState, setModalState] = useState<{
     isOpen: boolean;
-    card: ResourceCard | null;
+    card: Resource | null;
   }>({ isOpen: false, card: null });
 
-  const handleCardClick = (card: ResourceCard) => {
-    // If user has already subscribed or skipped, open resource directly
-    if (hasResourceAccess()) {
-      window.open(card.href, "_blank", "noopener,noreferrer");
+  const handleCardClick = (card: Resource) => {
+    // If subscribe modal is disabled or user has already subscribed/skipped, open resource directly
+    if (!subscribeModal || hasResourceAccess()) {
+      window.open(card.link, "_blank", "noopener,noreferrer");
       return;
     }
     // Otherwise show the subscribe modal
@@ -211,12 +165,12 @@ export function FreeResources() {
       <section className="w-full mt-6 sm:mt-8">
         {/* Container with max-width */}
         <div className="max-w-[var(--content-max-width)] mx-auto">
-          {/* Heading - Neue Haas Grotesk */}
+          {/* Heading */}
           <h2
             className="text-xl font-bold mb-3 sm:mb-4"
             style={{ color: "var(--color-vanilla)" }}
           >
-            Free Resources
+            Resources
           </h2>
 
           {/* Responsive grid - 1 col mobile, 2 cols on md+ with 3rd card spanning both */}
@@ -239,7 +193,7 @@ export function FreeResources() {
         onClose={handleCloseModal}
         onSkip={handleCloseModal}
         resourceTitle={modalState.card?.title ?? ""}
-        resourceHref={modalState.card?.href ?? "#"}
+        resourceHref={modalState.card?.link ?? "#"}
       />
     </>
   );

@@ -1,6 +1,9 @@
 import { ArrowUpRight } from "lucide-react";
+import { siteConfig } from "@/config/site.config";
 
 export function Footer() {
+  const { branding } = siteConfig;
+
   return (
     <footer className="w-[calc(100%+2*clamp(1rem,4vw,3rem))] -mx-[clamp(1rem,4vw,3rem)] bg-[var(--color-charcoal)] mt-8 py-12">
       {/* Content container - matches NavCard max-width */}
@@ -9,11 +12,9 @@ export function Footer() {
           {/* Left column - Tagline & Email */}
           <div className="flex flex-col gap-6">
             <p className="text-[var(--color-vanilla)]/70 text-sm font-medium leading-relaxed">
-              Transform your brand. Leverage AI.
-              <br />
-              Bring bold ideas to life.{" "}
+              {branding.tagline}{" "}
               <a
-                href="https://opensession.co"
+                href={branding.websiteUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-0.5 text-[var(--color-aperol)] hover:underline underline-offset-2 transition-all"
@@ -23,10 +24,10 @@ export function Footer() {
               </a>
             </p>
             <a
-              href="mailto:hello@opensession.co"
+              href={`mailto:${branding.email}`}
               className="text-[var(--color-vanilla)] text-xl sm:text-2xl font-bold hover:text-[var(--color-aperol)] transition-colors"
             >
-              hello@opensession.co
+              {branding.email}
             </a>
           </div>
 
@@ -41,7 +42,7 @@ export function Footer() {
               </span>
             </div>
             <p className="text-[var(--color-vanilla)]/50 text-sm">
-              © 2026 All rights reserved
+              © {branding.copyrightYear} All rights reserved
             </p>
           </div>
         </div>
