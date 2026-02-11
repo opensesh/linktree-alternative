@@ -17,7 +17,7 @@ export function Footer() {
                 href={branding.websiteUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-0.5 text-[var(--color-aperol)] hover:underline underline-offset-2 transition-all"
+                className="group inline-flex items-center gap-0.5 text-[var(--fg-brand-primary)] hover:underline underline-offset-2 transition-all"
               >
                 Start here
                 <ArrowUpRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-200" />
@@ -25,7 +25,7 @@ export function Footer() {
             </p>
             <a
               href={`mailto:${branding.email}`}
-              className="text-[var(--color-vanilla)] text-xl sm:text-2xl font-bold hover:text-[var(--color-aperol)] transition-colors"
+              className="text-[var(--color-vanilla)] text-xl sm:text-2xl font-bold hover:text-[var(--fg-brand-primary)] transition-colors"
             >
               {branding.email}
             </a>

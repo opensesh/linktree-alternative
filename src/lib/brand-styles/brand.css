@@ -13,7 +13,7 @@
   /* Brand Colors */
   --brand-charcoal: #191919;
   --brand-vanilla: #FFFAEE;
-  --brand-aperol: #FE5102;
+  --brand-accent: #3b82f6;
 
   /* OS Dark Theme Palette */
   --os-bg-darker: #0C0C0C;
@@ -54,7 +54,7 @@
   /* Accessibility */
   --focus-ring-width: 2px;
   --focus-ring-offset: 2px;
-  --focus-ring-color: var(--brand-aperol);
+  --focus-ring-color: var(--brand-accent);
   --min-touch-target: 44px;
 
   /* Transitions */

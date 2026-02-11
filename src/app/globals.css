@@ -44,7 +44,7 @@
   --color-fg-disabled: var(--fg-disabled);
   --color-fg-placeholder: var(--fg-placeholder);
   --color-fg-brand-primary: var(--fg-brand-primary);
-  --color-fg-brand-aperol: var(--fg-brand-aperol);
+  --color-fg-brand-accent: var(--fg-brand-primary);
   --color-fg-white: var(--fg-white);
 
   --color-border-primary: var(--border-primary);
@@ -56,7 +56,7 @@
   /* Brand primitives */
   --color-charcoal: #191919;
   --color-vanilla: #fffaee;
-  --color-aperol: #fe5102;
+  --color-accent: #3b82f6;
 
   /* Shadows */
   --shadow-xs: var(--shadow-xs);
