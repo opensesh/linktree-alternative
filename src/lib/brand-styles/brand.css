@@ -5,6 +5,9 @@
  * and base styles. Uses free fonts (Inter, JetBrains Mono) via Google Fonts.
  */
 
+/* Font imports must come first (Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
 /* ============================================
    CSS Custom Properties (Design Tokens)
    ============================================ */
@@ -60,14 +63,6 @@
   /* Transitions */
   --transition-colors: color 200ms ease, background-color 200ms ease, border-color 200ms ease;
 }
-
-
-/* ============================================
-   Font Imports (Google Fonts)
-   Using Inter for body text and JetBrains Mono for accents
-   ============================================ */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
 
 
 /* ============================================
