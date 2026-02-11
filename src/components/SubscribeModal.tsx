@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, FormEvent, useCallback } from "react";
 import { X, Check, Copy } from "lucide-react";
 import { ShuffleText } from "./ShuffleText";
+import { siteConfig } from "@/config/site.config";
 
 // localStorage key for resource access persistence
 const STORAGE_KEY = "os_resource_access";
@@ -84,7 +85,7 @@ export function SubscribeModal({
     // Submit to Substack via form (opens in new tab for confirmation)
     const form = document.createElement("form");
     form.method = "POST";
-    form.action = "https://opensession.substack.com/api/v1/free?nojs=true";
+    form.action = `${siteConfig.blog.subscribeUrl}/api/v1/free?nojs=true`;
     form.target = "_blank";
 
     const emailInput = document.createElement("input");
@@ -184,17 +185,21 @@ export function SubscribeModal({
 
               {/* Content */}
               <div className="text-center">
-                {/* Animated logo */}
+                {/* Logo icon */}
                 <div className="flex justify-center mb-4">
-                  <div className="w-20 h-20 rounded-full overflow-hidden bg-[var(--bg-tertiary)] border border-[var(--border-secondary)]">
-                    <video
-                      src="/OS_our-links/videos/OS_Monogram_CRT_charcoal_1_compressed.mp4"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full h-full object-cover object-center"
-                    />
+                  <div className="w-20 h-20 rounded-full overflow-hidden bg-[var(--bg-tertiary)] border border-[var(--border-secondary)] flex items-center justify-center">
+                    <svg
+                      className="w-10 h-10 text-[var(--fg-brand-primary)]"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                      <polyline points="22,6 12,13 2,6" />
+                    </svg>
                   </div>
                 </div>
 

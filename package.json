@@ -1,7 +1,18 @@
 {
-  "name": "os-our-links",
-  "version": "0.1.0",
+  "name": "linktree-alternative",
+  "version": "1.0.0",
+  "description": "A beautiful, customizable link portal template built with Next.js 15, React 19, and Tailwind CSS 4",
   "private": true,
+  "keywords": [
+    "linktree",
+    "link-in-bio",
+    "nextjs",
+    "react",
+    "tailwindcss",
+    "template"
+  ],
+  "author": "",
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
