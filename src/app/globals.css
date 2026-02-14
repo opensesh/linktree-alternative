@@ -7,9 +7,9 @@
 /* Tailwind 4 Theme Configuration */
 @theme inline {
   /* Typography - Font families */
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-display: "Inter", system-ui, sans-serif;
-  --font-accent: "JetBrains Mono", "Inter", monospace;
+  --font-sans: "Geist", system-ui, sans-serif;
+  --font-display: "Geist", system-ui, sans-serif;
+  --font-accent: "Geist", system-ui, sans-serif;
 
   /* Typography - Font sizes (from BOS-3.0) */
   --font-size-xs: 0.75rem;      /* 12px */
@@ -85,7 +85,7 @@ html {
 body {
   color: var(--fg-primary);
   background: var(--bg-primary);
-  font-family: "Inter", system-ui, sans-serif;
+  font-family: "Geist", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
