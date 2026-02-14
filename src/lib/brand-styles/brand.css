@@ -6,7 +6,7 @@
  */
 
 /* Font imports must come first (Google Fonts) */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap');
 
 /* ============================================
    CSS Custom Properties (Design Tokens)
@@ -49,10 +49,10 @@
                          inset -4px -4px 8px rgba(255, 255, 255, 0.01);
 
   /* Typography */
-  --font-display: 'Inter', system-ui, sans-serif;
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
-  --font-accent: 'JetBrains Mono', ui-monospace, monospace;
+  --font-display: 'Geist', system-ui, sans-serif;
+  --font-sans: 'Geist', system-ui, sans-serif;
+  --font-mono: 'Geist', ui-monospace, monospace;
+  --font-accent: 'Geist', ui-monospace, monospace;
 
   /* Accessibility */
   --focus-ring-width: 2px;
