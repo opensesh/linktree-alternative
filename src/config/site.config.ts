@@ -477,14 +477,10 @@ export const siteConfig: SiteConfig = {
   // BLOG / RSS FEED
   // ============================================
   blog: {
-    // Set to false to hide the blog section entirely
     enabled: true,
-    // Your RSS feed URL (Substack, Medium, Ghost, etc.)
-    feedUrl: "https://example.substack.com/feed",
-    // Section heading
-    title: "Recent Posts",
-    // Substack subscribe endpoint (leave empty to hide newsletter form)
-    subscribeUrl: "",
+    feedUrl: "https://opensession.substack.com/feed",
+    title: "Recent Blogs",
+    subscribeUrl: "https://opensession.substack.com",
   },
 };
 
