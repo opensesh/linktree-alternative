@@ -343,6 +343,116 @@ export const siteConfig: SiteConfig = {
         { label: "Insert category tag", ...COMMON_TAG_STYLES },
       ],
     },
+    {
+      id: "tool-7",
+      name: "Insert title",
+      icon: "/icons/tech/command/placeholder.svg",
+      url: "#",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      tags: [
+        { label: "Insert tag", bg: CATEGORY_COLORS.Design, text: "#fff" },
+        { label: "Insert category tag", ...COMMON_TAG_STYLES },
+      ],
+    },
+    {
+      id: "tool-8",
+      name: "Insert title",
+      icon: "/icons/tech/command/placeholder.svg",
+      url: "#",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      tags: [
+        { label: "Insert tag", bg: CATEGORY_COLORS.Content, text: "#fff" },
+        { label: "Insert category tag", ...COMMON_TAG_STYLES },
+      ],
+    },
+    {
+      id: "tool-9",
+      name: "Insert title",
+      icon: "/icons/tech/command/placeholder.svg",
+      url: "#",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      tags: [
+        { label: "Insert tag", bg: CATEGORY_COLORS.Productivity, text: "#fff" },
+        { label: "Insert category tag", ...COMMON_TAG_STYLES },
+      ],
+    },
+    {
+      id: "tool-10",
+      name: "Insert title",
+      icon: "/icons/tech/command/placeholder.svg",
+      url: "#",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      tags: [
+        { label: "Insert tag", bg: CATEGORY_COLORS.Coding, text: "#fff" },
+        { label: "Insert category tag", ...COMMON_TAG_STYLES },
+      ],
+    },
+    {
+      id: "tool-11",
+      name: "Insert title",
+      icon: "/icons/tech/command/placeholder.svg",
+      url: "#",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      tags: [
+        { label: "Insert tag", bg: CATEGORY_COLORS.Design, text: "#fff" },
+        { label: "Insert category tag", ...COMMON_TAG_STYLES },
+      ],
+    },
+    {
+      id: "tool-12",
+      name: "Insert title",
+      icon: "/icons/tech/command/placeholder.svg",
+      url: "#",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      tags: [
+        { label: "Insert tag", bg: CATEGORY_COLORS.Content, text: "#fff" },
+        { label: "Insert category tag", ...COMMON_TAG_STYLES },
+      ],
+    },
+    {
+      id: "tool-13",
+      name: "Insert title",
+      icon: "/icons/tech/command/placeholder.svg",
+      url: "#",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      tags: [
+        { label: "Insert tag", bg: CATEGORY_COLORS.Productivity, text: "#fff" },
+        { label: "Insert category tag", ...COMMON_TAG_STYLES },
+      ],
+    },
+    {
+      id: "tool-14",
+      name: "Insert title",
+      icon: "/icons/tech/command/placeholder.svg",
+      url: "#",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      tags: [
+        { label: "Insert tag", bg: CATEGORY_COLORS.Coding, text: "#fff" },
+        { label: "Insert category tag", ...COMMON_TAG_STYLES },
+      ],
+    },
+    {
+      id: "tool-15",
+      name: "Insert title",
+      icon: "/icons/tech/command/placeholder.svg",
+      url: "#",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      tags: [
+        { label: "Insert tag", bg: CATEGORY_COLORS.Design, text: "#fff" },
+        { label: "Insert category tag", ...COMMON_TAG_STYLES },
+      ],
+    },
+    {
+      id: "tool-16",
+      name: "Insert title",
+      icon: "/icons/tech/command/placeholder.svg",
+      url: "#",
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      tags: [
+        { label: "Insert tag", bg: CATEGORY_COLORS.Content, text: "#fff" },
+        { label: "Insert category tag", ...COMMON_TAG_STYLES },
+      ],
+    },
   ],
 
   // ============================================

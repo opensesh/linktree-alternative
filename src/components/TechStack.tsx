@@ -8,8 +8,8 @@ import { siteConfig, withBasePath } from "@/config/site.config";
 export function TechStack() {
   const techStack = siteConfig.tools;
 
-  // Default to middle item
-  const defaultIndex = Math.min(2, techStack.length - 1);
+  // Default to index 7 (or last item if fewer tools)
+  const defaultIndex = Math.min(7, techStack.length - 1);
   const [selectedIndex, setSelectedIndex] = useState(defaultIndex);
   const selected = techStack[selectedIndex];
   const scrollContainerRef = useRef<HTMLDivElement>(null);
