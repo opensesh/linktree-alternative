@@ -1,43 +1,121 @@
-# Blog RSS Feed Setup
+# Recent Blogs
 
-By default, the blog section shows a static placeholder card. Follow these steps to connect your own RSS feed and display live blog posts.
+<!-- AI_CONTEXT
+Component: src/components/RecentBlogs.tsx
+Config: siteConfig.blog (enabled, feedUrl, title, subscribeUrl)
+CSS: src/app/globals.css (classes: .blog-card, .blog-card-title, .blog-card-author, .blog-card-date, .blog-card-description, .subscribe-form, .subscribe-input, .subscribe-button, .subscribe-hint)
+Assets: None (blog images come from the RSS feed)
+Constraints: The default component is a static placeholder. To show live posts from an RSS feed, replace the component file with the dynamic version below. Uses rss2json.com API (no API key needed for basic usage). Subscribe form is hardcoded to Substack's API endpoint.
+-->
 
-## Quick Setup
+> **Component:** `src/components/RecentBlogs.tsx`
+> **Config:** `siteConfig.blog`
 
-1. **Set your RSS feed URL** in `src/config/site.config.ts`:
+## What This Section Does
+
+The Recent Blogs section shows blog post cards with a thumbnail, title, author, date, and description. It has two modes:
+
+1. **Static placeholder** (default) — Ships with the template, shows a single dummy card and a non-functional subscribe form. No external API calls.
+2. **Dynamic RSS** — Fetches up to 3 recent posts from any RSS feed and optionally shows a working newsletter subscribe form. Requires replacing the component file (see below).
+
+The section can be disabled entirely by setting `blog.enabled` to `false`.
+
+## File Map
+
+| File | Purpose |
+|------|---------|
+| `src/components/RecentBlogs.tsx` | Blog section component (static placeholder by default) |
+| `src/config/site.config.ts` | `blog` config object |
+| `src/app/globals.css` | `.blog-card`, `.subscribe-form`, `.subscribe-input`, `.subscribe-button` styles |
+
+## Configuration
+
+```ts
+blog: {
+  enabled: boolean;      // Show or hide the entire section
+  feedUrl: string;       // RSS feed URL (used by the dynamic component)
+  title: string;         // Section heading (e.g., "Recent Blogs")
+  subscribeUrl: string;  // Substack URL for newsletter form (leave empty to hide)
+}
+```
+
+### Default values
 
 ```ts
 blog: {
   enabled: true,
-  feedUrl: "https://yourblog.substack.com/feed", // Your RSS feed URL
+  feedUrl: "",
   title: "Recent Blogs",
-  subscribeUrl: "https://yourblog.substack.com", // Optional: newsletter signup
-},
+  subscribeUrl: "",
+}
 ```
 
-2. **Replace the placeholder component** — copy the dynamic version below into `src/components/RecentBlogs.tsx`
+## How to Connect Your Blog (Substack Example)
 
-3. **Done!** The component will fetch your 3 most recent posts and display them automatically. If you set `subscribeUrl`, a newsletter signup form will appear below the blog cards.
+This walkthrough uses Substack since it's one of the most common setups. At Open Session, we use Substack for our blog and newsletter.
 
-## Supported RSS Sources
+### Step 1: Update the config
 
-- **Substack**: `https://yourblog.substack.com/feed`
-- **Medium**: `https://medium.com/feed/@yourusername`
-- **WordPress**: `https://yourblog.com/feed`
-- **Ghost**: `https://yourblog.com/rss/`
-- Any standard **RSS 2.0** or **Atom** feed
+In `src/config/site.config.ts`, set your blog details:
 
-> Note: This uses the [rss2json.com](https://rss2json.com) API for CORS-friendly RSS fetching. No API key is required for basic usage.
+```ts
+blog: {
+  enabled: true,
+  feedUrl: "https://yourblog.substack.com/feed",
+  title: "Recent Blogs",
+  subscribeUrl: "https://yourblog.substack.com",
+}
+```
 
-## Newsletter Subscribe Form
+### Step 2: Replace the component
 
-The dynamic component includes a built-in subscribe form that connects to Substack's API. To enable it:
+Copy the entire **Dynamic RecentBlogs Component** section below and replace the contents of `src/components/RecentBlogs.tsx` with it.
 
-1. Set `subscribeUrl` in your blog config (e.g., `"https://yourblog.substack.com"`)
-2. The form will automatically appear below the blog cards
-3. It uses Substack's free subscription endpoint — no additional setup needed
+### Step 3: Done
 
-If you use a different newsletter provider, you can modify the form's `action` URL in the component to point to your provider's subscribe endpoint.
+The component will fetch your 3 most recent Substack posts and display them. If `subscribeUrl` is set, a newsletter signup form appears below the posts. The form submits directly to Substack's free subscription endpoint — no additional setup needed.
+
+## Other RSS Sources
+
+| Platform | Feed URL format |
+|----------|----------------|
+| **Substack** | `https://yourblog.substack.com/feed` |
+| **Medium** | `https://medium.com/feed/@yourusername` |
+| **WordPress** | `https://yourblog.com/feed` |
+| **Ghost** | `https://yourblog.com/rss/` |
+| **Any RSS 2.0 / Atom** | The feed's direct URL |
+
+> **Note:** The dynamic component uses the [rss2json.com](https://rss2json.com) API to fetch RSS feeds in a CORS-friendly way. No API key is required for basic usage.
+
+## Subscribe Form
+
+The subscribe form posts to `{subscribeUrl}/api/v1/free?nojs=true`, which is Substack's free subscription endpoint. If you use a different newsletter provider:
+
+1. Open `src/components/RecentBlogs.tsx` (after replacing with the dynamic version)
+2. Find the `<form>` tag with the `action` attribute
+3. Change the `action` URL to your provider's subscribe endpoint
+
+## How to Customize
+
+1. **Connect an RSS feed** — Follow the Substack example above, substituting your feed URL.
+2. **Disable the blog section** — Set `blog.enabled` to `false` in the config.
+3. **Change the section title** — Update `blog.title` (e.g., `"Latest Articles"`, `"From the Blog"`).
+4. **Hide the subscribe form** — Leave `blog.subscribeUrl` as an empty string `""`.
+5. **Change the number of posts shown** — In the dynamic component, find `.slice(0, 3)` and change `3` to your desired count.
+
+## Example AI Prompts
+
+Copy-paste these to an AI assistant to customize this section:
+
+> **Config + Component** — "Connect my Substack blog at myblog.substack.com to the Recent Blogs section. Replace the static placeholder component with the dynamic RSS version from the docs, set the feed URL, and enable the subscribe form."
+
+> **Config-only** — "Disable the blog section entirely by setting blog.enabled to false."
+
+> **Config-only** — "Change the blog section title from 'Recent Blogs' to 'Latest Articles'."
+
+> **Config + Component** — "Set up the dynamic RSS component with my Medium feed at https://medium.com/feed/@myuser. Don't show the subscribe form."
+
+> **Component edit** — "Change the blog section to show 5 recent posts instead of 3."
 
 ## Dynamic RecentBlogs Component
 
@@ -256,3 +334,7 @@ export function RecentBlogs() {
   );
 }
 ```
+
+---
+
+*[Back to index](README.md)*
