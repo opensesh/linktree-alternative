@@ -64,7 +64,6 @@ export function RecentBlogs() {
               type="email"
               placeholder="Enter your email"
               className="subscribe-input"
-              readOnly
             />
             <button type="button" className="subscribe-button">
               Subscribe
