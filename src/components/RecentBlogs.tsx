@@ -9,7 +9,7 @@
 // 1. Update `blog.feedUrl` in src/config/site.config.ts with your RSS URL
 // 2. Optionally set `blog.subscribeUrl` for a newsletter signup form
 // 3. Replace this file with the dynamic version from:
-//    docs/BLOG_RSS_SETUP.md
+//    docs/04-recent-blogs.md
 // ============================================
 
 import { siteConfig } from "@/config/site.config";

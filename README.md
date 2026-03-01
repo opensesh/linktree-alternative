@@ -13,6 +13,10 @@ A beautiful, customizable link portal template built with Next.js 15, React 19, 
 - **Static Export** - Deploy anywhere (GitHub Pages, Vercel, Netlify)
 - **Free Fonts** - Uses Inter and JetBrains Mono from Google Fonts
 
+## Documentation
+
+See the [full customization guide](docs/README.md) for detailed documentation on each section of the page, including example AI prompts for quick customization.
+
 ## Quick Start
 
 ### 1. Clone or Fork

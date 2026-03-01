@@ -461,7 +461,7 @@ export const siteConfig: SiteConfig = {
   blog: {
     enabled: true,
     // Add your RSS feed URL to fetch live blog posts (e.g., "https://yourblog.substack.com/feed")
-    // See docs/BLOG_RSS_SETUP.md for the dynamic RSS component
+    // See docs/04-recent-blogs.md for the dynamic RSS component
     feedUrl: "",
     title: "Recent Blogs",
     // Add your Substack URL to show a subscribe form (e.g., "https://yourblog.substack.com")
