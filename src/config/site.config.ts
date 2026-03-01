@@ -195,9 +195,9 @@ export const siteConfig: SiteConfig = {
   // NAVIGATION
   // ============================================
   nav: [
-    { id: "about", label: "About", href: "#" },
-    { id: "projects", label: "Projects", href: "#" },
-    { id: "contact", label: "Contact", href: "#" },
+    { id: "nav-1", label: "Insert", href: "#" },
+    { id: "nav-2", label: "Insert", href: "#" },
+    { id: "nav-3", label: "Insert", href: "#" },
   ],
 
   // ============================================
