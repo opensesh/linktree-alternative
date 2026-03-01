@@ -161,7 +161,7 @@ export const siteConfig: SiteConfig = {
     // Set to null to hide logo, or provide path like "/images/logo.svg"
     logo: "/images/logo_wordmark_charcoal.svg",
     logoAlt: "Open Session",
-    websiteUrl: "https://example.com",
+    websiteUrl: "https://opensession.co",
     tagline: "Your tagline goes here.",
     email: "hello@example.com",
     copyrightYear: "2024",
