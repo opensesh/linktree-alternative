@@ -1,3 +1,5 @@
+"use client";
+
 // ============================================
 // BLOG SECTION - STATIC PLACEHOLDER
 // ============================================
@@ -57,6 +59,24 @@ export function RecentBlogs() {
               </p>
             </div>
           </a>
+        </div>
+
+        {/* Placeholder subscribe form */}
+        <div className="mt-6">
+          <form className="subscribe-form" onSubmit={(e) => e.preventDefault()}>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="subscribe-input"
+              readOnly
+            />
+            <button type="button" className="subscribe-button">
+              Subscribe
+            </button>
+          </form>
+          <p className="subscribe-hint">
+            Get the latest posts delivered to your inbox
+          </p>
         </div>
       </div>
     </section>

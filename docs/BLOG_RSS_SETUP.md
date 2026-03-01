@@ -17,7 +17,7 @@ blog: {
 
 2. **Replace the placeholder component** — copy the dynamic version below into `src/components/RecentBlogs.tsx`
 
-3. **Done!** The component will fetch your 3 most recent posts and display them automatically.
+3. **Done!** The component will fetch your 3 most recent posts and display them automatically. If you set `subscribeUrl`, a newsletter signup form will appear below the blog cards.
 
 ## Supported RSS Sources
 
@@ -28,6 +28,16 @@ blog: {
 - Any standard **RSS 2.0** or **Atom** feed
 
 > Note: This uses the [rss2json.com](https://rss2json.com) API for CORS-friendly RSS fetching. No API key is required for basic usage.
+
+## Newsletter Subscribe Form
+
+The dynamic component includes a built-in subscribe form that connects to Substack's API. To enable it:
+
+1. Set `subscribeUrl` in your blog config (e.g., `"https://yourblog.substack.com"`)
+2. The form will automatically appear below the blog cards
+3. It uses Substack's free subscription endpoint — no additional setup needed
+
+If you use a different newsletter provider, you can modify the form's `action` URL in the component to point to your provider's subscribe endpoint.
 
 ## Dynamic RecentBlogs Component
 
