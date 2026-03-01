@@ -159,8 +159,8 @@ export const siteConfig: SiteConfig = {
   // ============================================
   branding: {
     // Set to null to hide logo, or provide path like "/images/logo.svg"
-    logo: "/images/logo-placeholder.svg",
-    logoAlt: "Your Brand",
+    logo: "/images/logo_wordmark_charcoal.svg",
+    logoAlt: "Open Session",
     websiteUrl: "https://example.com",
     tagline: "Your tagline goes here.\nBring bold ideas to life.",
     email: "hello@example.com",
