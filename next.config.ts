@@ -6,8 +6,8 @@ const nextConfig: NextConfig = {
 
   // GitHub Pages subpath configuration
   // Update this to match your repository name
-  basePath: "/linktree-alternative",
-  assetPrefix: "/linktree-alternative/",
+  // basePath: "/linktree-alternative",
+  // assetPrefix: "/linktree-alternative/",
 
   // Disable image optimization for static export
   images: {
