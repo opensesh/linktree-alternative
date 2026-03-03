@@ -1,6 +1,6 @@
 # Linktree Alternative
 
-A beautiful, customizable link portal template built with Next.js 15, React 19, and Tailwind CSS 4. Features smooth animations, responsive design, and an optional CRT terminal background effect.
+A beautiful, customizable link portal template built with Next.js 16, React 19, and Tailwind CSS 4. Features smooth animations, responsive design, and an optional CRT terminal background effect.
 
 ## Features
 
@@ -246,7 +246,7 @@ npm run build
 
 ## Tech Stack
 
-- **Framework**: Next.js 15 (App Router)
+- **Framework**: Next.js 16 (App Router)
 - **React**: 19
 - **Styling**: Tailwind CSS 4
 - **Animations**: Framer Motion, GSAP

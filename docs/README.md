@@ -14,7 +14,7 @@ This guide covers every section of the link portal, how it works, and how to cus
 
 - **Single config file:** All content lives in [`src/config/site.config.ts`](../src/config/site.config.ts). Most customizations only require editing this one file.
 - **Component-per-section:** Each page section is a standalone React component in `src/components/`.
-- **Static export:** The site builds to static HTML via Next.js 15, deployable anywhere (GitHub Pages, Vercel, Netlify).
+- **Static export:** The site builds to static HTML via Next.js 16, deployable anywhere (GitHub Pages, Vercel, Netlify).
 
 ## Section Map
 

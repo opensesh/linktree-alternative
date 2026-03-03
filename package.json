@@ -1,7 +1,7 @@
 {
   "name": "linktree-alternative",
   "version": "1.0.0",
-  "description": "A beautiful, customizable link portal template built with Next.js 15, React 19, and Tailwind CSS 4",
+  "description": "A beautiful, customizable link portal template built with Next.js 16, React 19, and Tailwind CSS 4",
   "private": true,
   "keywords": [
     "linktree",
