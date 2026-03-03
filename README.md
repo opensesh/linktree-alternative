@@ -301,6 +301,52 @@ npm run lint     # Run ESLint
 npm start        # Start production server
 ```
 
+## Troubleshooting
+
+### Images don't appear
+
+- **Check the path** — Image paths must start with `/` (e.g., `/images/logo.svg`, not `images/logo.svg`)
+- **Verify the file exists** — Make sure the file is in the `public/` folder at the exact path you specified
+- **Check file extension** — Ensure the extension in your config matches the actual file (`.svg` vs `.png`)
+
+### Blog posts won't load
+
+- **RSS feed must be public** — The feed URL needs to be accessible without authentication
+- **Check the URL** — Visit your `feedUrl` directly in a browser to verify it returns XML
+- **CORS issues** — Some feeds block cross-origin requests; try a different RSS source or use a proxy
+
+### Deploy looks broken on GitHub Pages
+
+- **basePath configuration** — Update `basePath` in `next.config.ts` to match your repository name:
+  ```javascript
+  basePath: "/your-repo-name",
+  ```
+- **Update getBasePath()** — Also update the helper function in `site.config.ts` to return the same value
+- **Clear cache** — Try a hard refresh (Cmd+Shift+R on Mac, Ctrl+Shift+R on Windows)
+
+### Icons or images are blurry
+
+- **Use SVG when possible** — SVG files scale perfectly at any size
+- **Increase resolution** — For PNG/JPEG, use at least 2x the display size (e.g., 200x200px for a 100x100px display)
+- **Check compression** — Some compression tools reduce quality too aggressively
+
+### Accent color changes don't apply everywhere
+
+- **Update both locations** — Change `theme.accentColor` in `site.config.ts` AND the brand color scale in `src/app/theme.css`
+- **Full color scale needed** — The CSS uses multiple shades (brand-50 through brand-900); update them all for consistency
+- **Use a palette generator** — Tools like [Coolors](https://coolors.co/) or [Realtime Colors](https://www.realtimecolors.com/) can generate a full scale
+
+### Development server won't start
+
+- **Port in use** — Another app may be using port 3000. Try `npm run dev -- -p 3001`
+- **Node version** — Ensure you're using Node.js 18 or higher (`node --version`)
+- **Clear cache** — Delete `.next` folder and `node_modules`, then run `npm install` again
+
+### Still stuck?
+
+- Check the [section-specific documentation](docs/README.md) for detailed guides
+- Each doc includes AI prompts you can copy-paste to get help with changes
+
 ## License
 
 MIT License - feel free to use for personal or commercial projects.
