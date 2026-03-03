@@ -215,6 +215,17 @@ features: {
 }
 ```
 
+## Design Resources
+
+Looking for components, icons, or design inspiration? Here are some curated resources:
+
+- **[Open Session Design Directory](https://design-directory-blue.vercel.app/)** — Curated design resources, tools, and inspiration
+- **[React Bits](https://www.reactbits.dev/)** — Animated components and micro-interactions for React
+- **[Untitled UI](https://www.untitledui.com/)** — Icons, design system foundations, and UI components
+- **[Simple Icons](https://simpleicons.org/)** — Free SVG icons for popular brands (great for tool icons)
+- **[Realtime Colors](https://www.realtimecolors.com/)** — Visualize your color palette on a real site
+- **[Coolors](https://coolors.co/)** — Color palette generator
+
 ## Deployment
 
 ### GitHub Pages
